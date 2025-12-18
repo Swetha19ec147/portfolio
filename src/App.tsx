@@ -1,10 +1,13 @@
+import { lazy, Suspense } from 'react'
 import Scene from './components/canvas/Scene'
 import Navbar from './components/ui/Navbar'
-import Hero from './pages/Hero'
-import About from './pages/About'
-import Services from './pages/Services'
-import Portfolio from './pages/Portfolio'
-import Contact from './pages/Contact'
+
+// Lazy load page components for better performance
+const Hero = lazy(() => import('./pages/Hero'))
+const About = lazy(() => import('./pages/About'))
+const Services = lazy(() => import('./pages/Services'))
+const Portfolio = lazy(() => import('./pages/Portfolio'))
+const Contact = lazy(() => import('./pages/Contact'))
 
 function App() {
   return (
@@ -13,12 +16,13 @@ function App() {
       <Navbar />
 
       <div className="relative z-10">
-        <Hero />
-
-        <About />
-        <Services />
-        <Portfolio />
-        <Contact />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-pulse text-primary text-xl">Loading...</div></div>}>
+          <Hero />
+          <About />
+          <Services />
+          <Portfolio />
+          <Contact />
+        </Suspense>
       </div>
     </main>
   )

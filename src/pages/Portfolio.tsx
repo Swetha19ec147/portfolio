@@ -95,8 +95,8 @@ const Portfolio = () => {
                         key={category}
                         onClick={() => handleCategoryChange(category)}
                         className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category
-                                ? "bg-primary text-white shadow-lg shadow-primary/25 scale-105"
-                                : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                            ? "bg-primary text-white shadow-lg shadow-primary/25 scale-105"
+                            : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
                             }`}
                     >
                         {category}
@@ -147,6 +147,7 @@ const Portfolio = () => {
                                     <img
                                         src={project.image}
                                         alt={project.title}
+                                        loading="lazy"
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">

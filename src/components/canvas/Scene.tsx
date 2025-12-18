@@ -9,7 +9,8 @@ export default function Scene() {
         <div className="fixed top-0 left-0 w-full h-full -z-10">
             <Canvas
                 camera={{ position: [0, 0, 8], fov: 50 }}
-                dpr={[1, 2]}
+                dpr={[1, 1.5]} // Reduced from [1, 2] for better performance
+                performance={{ min: 0.5 }} // Allow performance degradation if needed
             >
                 {/* Background */}
                 <color attach="background" args={['#000000']} />
@@ -39,18 +40,18 @@ export default function Scene() {
                     <Stars
                         radius={150}
                         depth={80}
-                        count={8000}
-                        factor={6}
+                        count={2500} // Reduced from 8000 for better performance
+                        factor={5}
                         saturation={0}
                         fade
-                        speed={1.5}
+                        speed={1.2}
                     />
                     <Environment preset="night" />
                     <ContactShadows
                         position={[0, -5, 0]}
-                        opacity={0.5}
+                        opacity={0.3} // Reduced from 0.5
                         scale={30}
-                        blur={2.5}
+                        blur={1.5} // Reduced from 2.5
                         far={5}
                     />
 
@@ -64,12 +65,12 @@ export default function Scene() {
                         minPolarAngle={Math.PI / 2}
                     />
 
-                    {/* Post-processing effects */}
+                    {/* Post-processing effects - optimized */}
                     <EffectComposer>
                         <Bloom
-                            intensity={0.5}
-                            luminanceThreshold={0.2}
-                            luminanceSmoothing={0.9}
+                            intensity={0.3} // Reduced from 0.5
+                            luminanceThreshold={0.3} // Increased from 0.2
+                            luminanceSmoothing={0.8} // Reduced from 0.9
                         />
                     </EffectComposer>
                 </Suspense>
