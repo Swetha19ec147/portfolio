@@ -1,0 +1,70 @@
+# ========================================
+# DEPLOYMENT COMMANDS - Copy & Paste These
+# ========================================
+
+# STEP 1: Configure Git (Replace with YOUR info)
+# -----------------------------------------------
+git config --global user.name "Your Full Name"
+git config --global user.email "your.email@example.com"
+
+# STEP 2: Commit Your Code
+# -----------------------------------------------
+git commit -m "Initial commit - Ready for deployment to visionarybyteworks.com"
+
+# STEP 3: Create GitHub Repository
+# -----------------------------------------------
+# Go to: https://github.com/new
+# - Name: portfolio
+# - Public repository
+# - DO NOT initialize with README
+# - Click "Create repository"
+
+# STEP 4: Push to GitHub (Replace YOUR_USERNAME)
+# -----------------------------------------------
+git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
+git branch -M main
+git push -u origin main
+
+# If you get authentication error, run:
+# gh auth login
+
+# ========================================
+# NEXT: Deploy to Netlify (Manual Steps)
+# ========================================
+
+# 1. Go to: https://app.netlify.com/signup
+#    - Sign up with GitHub
+
+# 2. Click "Add new site" → "Import an existing project"
+
+# 3. Select GitHub → Authorize → Choose your repository
+
+# 4. Build settings (auto-detected):
+#    - Build command: npm run build
+#    - Publish directory: dist
+
+# 5. Click "Deploy site"
+
+# 6. Wait ~2 minutes
+
+# 7. Add custom domain:
+#    - Site settings → Domain management
+#    - Add custom domain: visionarybyteworks.com
+
+# 8. Configure DNS at your domain registrar:
+#    Option A: Use Netlify DNS (easier)
+#    - Update nameservers to Netlify's
+
+#    Option B: Add DNS records
+#    - A record: @ → 75.2.60.5
+#    - CNAME: www → your-site.netlify.app
+
+# 9. Wait 24-48 hours for DNS propagation
+
+# 10. Enable HTTPS in Netlify
+#     - Domain settings → HTTPS → Provision certificate
+
+# ========================================
+# DONE! Your site will be live at:
+# https://visionarybyteworks.com
+# ========================================
